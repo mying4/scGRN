@@ -223,7 +223,6 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
                     coef = NULL)
   }
   
-  print(nrow(df))
   return(df)
 
 }
