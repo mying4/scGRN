@@ -169,6 +169,8 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
          }else{
 
            for (j in 0:10) {
+             
+             
              # assign(paste("fit", i, sep=""), cv.glmnet(x.train, y.train,
              # type.measure="mse", alpha=i/10,family="gaussian"))
              yfit[[j+1]] <- glmnet::cv.glmnet(x.train, y.train, type.measure="mse",
@@ -181,6 +183,10 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
 
            TF_coef <- as.matrix(fitcoef)
            TF_coef <- TF_coef[2:nrow(TF_coef),]
+           
+           print('here - elastic net')
+           print(TF_coef)
+           
            if(cutoff_by == 'quantile'){
              TF_coef <- TF_coef[abs(TF_coef) > quantile(abs(TF_coef),1 - cutoff_percentage)]
            }else if(cutoff_by == 'absolute'){
