@@ -136,6 +136,12 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
   }
 
   tgs <- unique(df$gene)
+  
+  print('tgs')
+  pring(length(tgs))
+  
+  
+  
   cl <- parallel::makeCluster(num_cores)
   # not overload your computer
   doParallel::registerDoParallel(cl)
@@ -222,8 +228,10 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
     df <- data.frame(TG = NULL, TF = NULL, enhancer = NULL, promoter = NULL, TFbs = NULL,
                     coef = NULL)
   }
+  
+  print('df nrow')
   print(nrow(df))
-  print("here is the problem")
+
   return(df)
 
 }
