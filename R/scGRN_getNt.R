@@ -220,7 +220,8 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
     df <- data.frame(TG = NULL, TF = NULL, enhancer = NULL, promoter = NULL, TFbs = NULL,
                     coef = NULL)
   }
-
+ 
+  print('hello')
   return(df)
 
 }
