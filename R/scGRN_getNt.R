@@ -150,10 +150,16 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
      selgene <- tgs[i]
 
      if(selgene %in% rownames(gexpr)){
+       print(selgene)
+       print('1')
+       
        selTFs <- unique(df[df$gene == selgene, 'TF'])
        train_cols <- sample(1:ncol(gexpr), round(train_ratio*ncol(gexpr)))
        if(sum(rownames(gexpr) %in% selTFs) > 1 ){
-
+         
+         print(sum(rownames(gexpr) %in% selTFs))
+         print('2')
+         
          x.train <- t(gexpr[rownames(gexpr) %in% selTFs,train_cols])
          x.test <- t(gexpr[rownames(gexpr) %in% selTFs,-train_cols])
          y.train <- t(gexpr[selgene,train_cols])
@@ -164,13 +170,15 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
          mse <- rep(Inf,length(yfit))
 
          if(sd(y.train) == 0){
-          curr_df <- data.frame(TG = NULL, TF = NULL,
+           print('3')
+           
+           curr_df <- data.frame(TG = NULL, TF = NULL,
                                    coef = NULL)
          }else{
+           
+           print('4')
 
            for (j in 0:10) {
-             
-             
              # assign(paste("fit", i, sep=""), cv.glmnet(x.train, y.train,
              # type.measure="mse", alpha=i/10,family="gaussian"))
              yfit[[j+1]] <- glmnet::cv.glmnet(x.train, y.train, type.measure="mse",
