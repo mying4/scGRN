@@ -227,6 +227,7 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
 
   parallel::stopCluster(cl)
 
+  print(str(output_df))
    # df and output_df
    # df has gene, enhancer, TF
    # output_df has TG, TF, coef
