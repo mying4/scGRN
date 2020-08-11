@@ -4,7 +4,9 @@
 \name{gexpr}
 \alias{gexpr}
 \title{Sample gene expression data}
-\format{An object of class \code{data.frame} with 5000 rows and 1800 columns.}
+\format{
+An object of class \code{data.frame} with 5000 rows and 1800 columns.
+}
 \usage{
 gexpr
 }
