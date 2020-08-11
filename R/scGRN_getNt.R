@@ -147,8 +147,10 @@ scGRN_getNt <- function(df, gexpr, df_gene_id = 'hgnc_symbol', gexpr_gene_id = '
   doParallel::registerDoParallel(cl)
   output_df <- foreach::foreach(i = 1:length(tgs), .combine = rbind, .packages='glmnet') %dopar% {
 
+    
+     print('start?')
      selgene <- tgs[i]
-
+     
      if(selgene %in% rownames(gexpr)){
        print(selgene)
        print('1')
